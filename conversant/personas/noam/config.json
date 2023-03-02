@@ -1,0 +1,24 @@
+{
+    "chatbot_config": {
+        "max_context_examples": 10,
+        "avatar": ":amphora:"
+    },
+    "client_config": {
+        "model": "command-xlarge-nightly",
+        "max_tokens": 150,
+        "temperature": 0.5,
+        "stop_sequences": [
+            "\nLex:"
+        ]
+    },
+    "chat_prompt_config": {
+        "MIN_NUM_EXAMPLES": 0,
+        "preamble": "Here's a conversation between Lex and Noam.",
+        "example_separator": "\n",
+        "headers": {
+            "user": "Lex",
+            "bot": "Noam"
+        },
+        "examples": [[]]
+    }
+}
