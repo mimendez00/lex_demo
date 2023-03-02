@@ -492,7 +492,7 @@ class PromptChatbot(Chatbot):
             #takes the the top 10 result from rerank and formats it
             generate = "\n".join((result.document["text"].strip() for result in rerank_results))
 
-            generate_input = f"Context:\n{generate}\n\nAndrej will answer based on the context above. If the context does not include relevant information or he's not sure he'll say, 'Sorry, I could not find the answer to that'\n\n{new_query}"
+            generate_input = f"Context:\n{generate}\n\n{new_query}"
 
             print("***INPUT***", generate_input)
 

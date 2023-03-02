@@ -12,7 +12,7 @@
         ]
     },
     "chat_prompt_config": {
-        "preamble": "Here's a conversation between Lex and Rana.",
+        "preamble": "Andrej will answer based on the context above. If the context does not include relevant information or he's not sure he'll say, 'Sorry, I could not find the answer to that'\\nHere's a conversation between Lex Fridman and Rana el Kaliouby",
         "example_separator": "\n",
         "headers": {
             "user": "Lex",

@@ -1,3 +1,18 @@
+# CCAI Specific Setup Instructions
+
+```bash
+# Create a virtual environment
+python3 -m venv venv
+source venv/bin/activate
+# Install Poetry
+pip install poetry
+poetry install
+# Install Streamlit
+pip install streamlit
+streamlit run conversant/demo/streamlit_example.py
+```
+
+## Original README
 ```
 ################################################################################
 #    ____      _                     ____                  _ _                 #
