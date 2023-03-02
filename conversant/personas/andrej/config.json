@@ -12,7 +12,7 @@
         ]
     },
     "chat_prompt_config": {
-        "preamble": "Here's a conversation between Lex and Andrej.",
+        "preamble": "Here's a conversation between Lex Fridman and Andrej Karpathy.",
         "example_separator": "\n",
         "headers": {
             "user": "Lex",

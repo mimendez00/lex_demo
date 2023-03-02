@@ -465,6 +465,7 @@ class PromptChatbot(Chatbot):
             similarity = get_similarity(new_query_embeds,embeds)
 
             # View the top 50 best result with the embedings
+            verbose = True
             if verbose: 
                 print('Result of the embeddings Query:')
                 print(new_query,'\n')
@@ -484,13 +485,14 @@ class PromptChatbot(Chatbot):
                 print(new_query,'\n')
             rerank_results = co.rerank(query=new_query,documents=result,top_n=10)
             if verbose:
-                for i in  range(9):
-                    print("context:",rerank_results[i].document['text'])
+                for i in range(9):
+                    print("rerank_results:",rerank_results[i])
+                    #print("context:",rerank_results[i].document['text'])
                 print('\n\n\n') 
             #takes the the top 10 result from rerank and formats it
             generate = "\n".join((result.document["text"].strip() for result in rerank_results))
 
-            generate_input = f"Here are the facts:{generate}\n\nAnswer the last question based on the facts above and the conversation below. If the context does not include the answer, then say: 'Sorry, I could not find the answer to that'{new_query}"
+            generate_input = f"Context:\n{generate}\n\nAndrej will answer based on the context above. If the context does not include relevant information or he's not sure he'll say, 'Sorry, I could not find the answer to that'\n\n{new_query}"
 
             print("***INPUT***", generate_input)
 
