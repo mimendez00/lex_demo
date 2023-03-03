@@ -9,8 +9,16 @@ pip install poetry
 poetry install
 # Install Streamlit
 pip install streamlit
-streamlit run conversant/demo/streamlit_example.py
+COHERE_API_KEY="YOUR_API_KEY" streamlit run conversant/demo/streamlit_example.py
 ```
+
+## CCAI Specific Sequence Diagram
+
+![Sequence Diagram](./static/sequence_diagram.png)
+
+## CCAI Example
+
+![example_with_andrej](./static/example_with_andrej.png)
 
 ## Original README
 ```
