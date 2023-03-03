@@ -62,13 +62,14 @@ def get_similarity(target,candidates):
     return similarity_scores
 
 dfs = {
-    "andrej": get_df(HERE / "andrej.csv"),
+    "Andrej Karpathy: Tesla AI, Self-Driving, Optimus, Aliens, and AGI": get_df(HERE / "andrej.csv"),
     "noam": get_df(HERE / "noam.csv"),
     "rana": get_df(HERE / "rana.csv")
 }
 
 intros = {
-    "andrej": "Ask me questions about the video `Andrej Karpathy: Tesla AI, Self-Driving, Optimus, Aliens, and AGI | Lex Fridman Podcast #333`",
+#    "Andrej Karpathy: Tesla AI, Self-Driving, Optimus, Aliens, and AGI": "Ask me questions about the video `Andrej Karpathy: Tesla AI, Self-Driving, Optimus, Aliens, and AGI | Lex Fridman Podcast #333`",
+    "Andrej Karpathy: Tesla AI, Self-Driving, Optimus, Aliens, and AGI": "Ask Anrej Karpathy questions about the podcast `Andrej Karpathy: Tesla AI, Self-Driving, Optimus, Aliens, and AGI | Lex Fridman Podcast #333`",
     "rana": "Ask me questions about the video `Rana el Kaliouby: Emotion AI, Social Robots, and Self-Driving Cars | Lex Fridman Podcast #322`",
     "noam": "Ask me questions about the video `Noam Brown: AI vs Humans in Poker and Games of Strategic Negotiation | Lex Fridman Podcast #344`"
 }
@@ -448,6 +449,7 @@ class PromptChatbot(Chatbot):
             Interaction: Dictionary of query and generated LLM response
         """      
         co = self.co
+        print("self.persona_name", self.persona_name)
         df = dfs[self.persona_name]
         
         def query_tech_trends(new_query, verbose=False):
@@ -483,9 +485,9 @@ class PromptChatbot(Chatbot):
             if verbose:
                 print('Result of rerank:')
                 print(new_query,'\n')
-            rerank_results = co.rerank(query=new_query,documents=result,top_n=10)
+            rerank_results = co.rerank(query=new_query,documents=result,top_n=5)
             if verbose:
-                for i in range(9):
+                for i in range(4):
                     print("rerank_results:",rerank_results[i])
                     #print("context:",rerank_results[i].document['text'])
                 print('\n\n\n') 
