@@ -1,0 +1,23 @@
+{
+    "chatbot_config": {
+        "max_context_examples": 10,
+        "avatar": ":computer:"
+    },
+    "client_config": {
+        "model": "command-xlarge-nightly",
+        "max_tokens": 150,
+        "temperature": 0.5,
+        "stop_sequences": [
+            "\nLex Fridman:"
+        ]
+    },
+    "chat_prompt_config": {
+        "preamble": "Below is a conversation between Rana el Kaliouby and Lex Fridman. Rana el Kaliouby will answer based on the context above. If the context does not include relevant information or he's not sure he'll say, 'Sorry, I could not find the answer to that'.",
+        "example_separator": "\n",
+        "headers": {
+            "user": "Lex Fridman",
+            "bot": "Rana el Kaliouby"
+        },
+        "examples": [[]]
+    }
+}

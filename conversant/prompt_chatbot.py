@@ -10,6 +10,7 @@ import json
 import logging
 import os
 import warnings
+import time
 from concurrent.futures import Future, ThreadPoolExecutor
 from typing import Any, Dict, Tuple
 
@@ -33,6 +34,7 @@ def get_embeddings(texts,model='multilingual-22-12'):
     output = co.embed(
                     model=model,
                     texts=texts)
+    time.sleep(3.0)
     return output.embeddings
 
 def get_df(csv_path: Path):
@@ -63,15 +65,15 @@ def get_similarity(target,candidates):
 
 dfs = {
     "Andrej Karpathy: Tesla AI, Self-Driving, Optimus, Aliens, and AGI": get_df(HERE / "andrej.csv"),
-    "noam": get_df(HERE / "noam.csv"),
-    "rana": get_df(HERE / "rana.csv")
+    "Noam Brown: AI vs Humans in Poker and Games of Strategic Negotiation": get_df(HERE / "noam.csv"),
+    "Rana el Kaliouby: Emotion AI, Social Robots, and Self-Driving Cars": get_df(HERE / "rana.csv")
 }
 
 intros = {
 #    "Andrej Karpathy: Tesla AI, Self-Driving, Optimus, Aliens, and AGI": "Ask me questions about the video `Andrej Karpathy: Tesla AI, Self-Driving, Optimus, Aliens, and AGI | Lex Fridman Podcast #333`",
     "Andrej Karpathy: Tesla AI, Self-Driving, Optimus, Aliens, and AGI": "Ask Anrej Karpathy questions about the podcast `Andrej Karpathy: Tesla AI, Self-Driving, Optimus, Aliens, and AGI | Lex Fridman Podcast #333`",
-    "rana": "Ask me questions about the video `Rana el Kaliouby: Emotion AI, Social Robots, and Self-Driving Cars | Lex Fridman Podcast #322`",
-    "noam": "Ask me questions about the video `Noam Brown: AI vs Humans in Poker and Games of Strategic Negotiation | Lex Fridman Podcast #344`"
+    "Noam Brown: AI vs Humans in Poker and Games of Strategic Negotiation": "Ask Noam Broan questions about the podcast `Noam Brown: AI vs Humans in Poker and Games of Strategic Negotiation | Lex Fridman Podcast #344`",
+    "Rana el Kaliouby: Emotion AI, Social Robots, and Self-Driving Cars": "Ask Rana el Kaliouby questions about the podcast `Rana el Kaliouby: Emotion AI, Social Robots, and Self-Driving Cars | Lex Fridman Podcast #322`"
 }
 
 
@@ -484,11 +486,11 @@ class PromptChatbot(Chatbot):
             #use rerank top filter out the top 10 answers
             if verbose:
                 print('Result of rerank:')
-                print(new_query,'\n')
-            rerank_results = co.rerank(query=new_query,documents=result,top_n=5)
+                print(new_query, '\n')
+            rerank_results = co.rerank(query=new_query, documents=result, top_n=10)
             if verbose:
-                for i in range(4):
-                    print("rerank_results:",rerank_results[i])
+                for i in range(9):
+                    print("rerank_results:", rerank_results[i])
                     #print("context:",rerank_results[i].document['text'])
                 print('\n\n\n') 
             #takes the the top 10 result from rerank and formats it
@@ -501,6 +503,8 @@ class PromptChatbot(Chatbot):
             # pass the top 10 result through generate to get a more formated answer
             kwargs_ = kwargs.copy()
             kwargs_["prompt"] = generate_input
+            print("PARAMS TO CO.GENERATE: ")
+            print(kwargs_)
             response = generated_object = co.generate(
                 **kwargs_,
                 k=0,

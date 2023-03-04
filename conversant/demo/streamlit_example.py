@@ -120,7 +120,7 @@ def update_prompt_from_json() -> None:
 # This ensures rendering is prevented upon import of this file.
 if __name__ == "__main__":
     st.set_page_config(
-        page_title="Conversational personas using Cohere",
+        page_title="Lex Fridman Podcast Q&A",
         page_icon="🎭",
         layout="wide",
     )
@@ -174,7 +174,7 @@ if __name__ == "__main__":
 
     # Adding a header to direct users to sign up for Cohere, explore the playground,
     # and check out our git repo.
-    st.header("🎭 Conversational Personas using Cohere")
+    st.header("Lex Fridman Podcast Q&A")
     with st.expander("About", expanded="bot" not in st.session_state):
         st.markdown(
             """

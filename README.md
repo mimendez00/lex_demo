@@ -1,6 +1,3 @@
-/todo Lex Fridman Podcast Q&A
-/todo Name of Bot with video title
-
 ```bash
 # Create a virtual environment
 python3 -m venv venv
@@ -12,6 +9,14 @@ poetry install
 pip install streamlit
 COHERE_API_KEY="YOUR_API_KEY" streamlit run conversant/demo/streamlit_example.py
 ```
+
+## Sequence Diagram
+
+![Sequence Diagram](./static/sequence_diagram.png)
+
+## Example
+
+![example_with_andrej](./static/example_with_andrej.png)
 
 ## Original README
 ```
